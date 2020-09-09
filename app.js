@@ -1,11 +1,11 @@
 var http = require('http');
-var fs = require('fs');
-var url = require('url');
-var path = require('path');
+//var fs = require('fs');
+//var url = require('url');
+//var path = require('path');
 
 http.createServer(function (req, res) {
-	var q = url.parse(req.url, true);
-	var t_url = q.pathname;
+	//var q = url.parse(req.url, true);
+	//var t_url = q.pathname;
   	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write("sadasdasdasdas");
 
