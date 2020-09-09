@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+font-family: Arial;
+height: 100%;
+margin: 0;
+background: rgb(8,172,143);
+background: linear-gradient(90deg, rgba(8,172,143,1) 0%, rgba(8,183,218,1) 100%);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+div{
+font-family: Arial;
+}
+span{
+font-family: Arial;
+}
+button{
+font-family: Arial;
+font-weight: bold;
+cursor: pointer;
+}
+.c{
+background: white;
+height: 400px;
+width: 400px;
+box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.15);
+padding: 20px;
+border-radius: 15px;
+margin: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.form1{
+flex-grow: 1;
+}
+.title{
+font-size: 22px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+textarea{
+border-radius: 10px;
+font-family: Arial;
+flex-grow: 1;
+flex: 1;
+height: 300px;
+width: 340px;
+max-height: 300px;
+max-width: 340px;
+font-size: 20px;
+}
+.btn{
+font-size: 16px;
+height: 40px;
+width: 180px;
+border: 0;
+border-radius: 500px;
+margin-top: 10px;
+color: white;
+background: #08ac8f;
+transition: 0.15s;
+}
+.btn:hover{
+background: #08b7da;
+}
+.t{
+flex: 1;
+}
+</style>
+<title>
+Prizebond
+</title>
+</head>
+<body>
+
+
+<div class="c">
+<span class="title" id="add_txt">Add</span>
+<form class="form1">
+<textarea onchange="txt_a();" id="add_input"></textarea>
+</form>
+<button onclick="add_go();" class="btn">Add Numbers</button>
+</div>
+
+
+<div class="c">
+<span class="title" id="check_txt">Check</span>
+<form class="form1">
+<textarea onchange="txt_c();" id="check_input"></textarea>
+</form>
+<div class="t">
+<button onclick="check_go();" class="btn">Check Numbers</button>
+<button onclick="list_go();" class="btn">Numbers List</button>
+</div>
+</div>
+
+
+
+<script>
+var add_txti = document.getElementById("add_txt");
+var check_txt = document.getElementById("check_txt");
+
+var add_input = document.getElementById("add_input");
+var check_input = document.getElementById("check_input");
+
+
+function txt_a(){
+var all_txt = add_input.value;
+var b_all_txt = all_txt.split("\n");
+var count_nums = b_all_txt.length;
+//alert(count_nums);
+
+if(all_txt.length > 0){
+var f = "Add (Total numbers: " + count_nums + ")";
+}else{
+var f = "Add";
+}
+add_txti.innerHTML = f;
+}
+
+function txt_c(){
+var all_txt = check_input.value;
+var b_all_txt = all_txt.split("\n");
+var count_nums = b_all_txt.length;
+//alert(count_nums);
+
+if(all_txt.length > 0){
+var f = "Check (Total numbers: " + count_nums + ")";
+}else{
+var f = "Check";
+}
+check_txt.innerHTML = f;
+}
+
+
+function add_go(){
+var r = "";
+var all_txt = add_input.value;
+if(all_txt.length > 0){
+var b_all_txt = all_txt.split("\n");
+
+b_all_txt.forEach(element => 
+r += "," + element
+);
+
+r = r.substring(1);
+//alert(window.location + "?method=add&numbers=" + r);
+window.location.href += "?method=add&numbers=" + r;
+
+}
+}
+
+function check_go(){
+var r = "";
+var all_txt = check_input.value;
+if(all_txt.length > 0){
+var b_all_txt = all_txt.split("\n");
+
+b_all_txt.forEach(element => 
+r += "," + element
+);
+
+r = r.substring(1);
+//alert(window.location + "?method=check&numbers=" + r);
+window.location.href += "?method=check&numbers=" + r;
+}
+
+}
+
+
+function list_go(){
+var link = window.location.href += "?method=list";
+window.open(link, '_blank');
+}
+
+</script>
+</body>
+</html>
